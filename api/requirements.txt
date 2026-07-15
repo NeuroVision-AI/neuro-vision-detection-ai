@@ -1,0 +1,32 @@
+# FastAPI Backend & Server
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+
+# LangChain core + providers
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-ollama>=0.2.0
+langchain-openai>=0.1.0
+langchain-google-genai>=1.0.0
+
+# Vector store
+chromadb>=0.5.0
+
+# Embeddings (CPU-only, lightweight)
+sentence-transformers>=2.7.0
+
+# Document loaders
+pypdf>=4.0.0
+openpyxl>=3.1.2
+pandas>=2.0.0
+tabulate>=0.9.0
+
+# Image processing
+Pillow>=10.0.0
+numpy>=1.24.0
+pydicom>=2.4.0
+reportlab>=4.0.0
+# torch, torchvision, timm, opencv-python assumed pre-installed globally
