@@ -1,0 +1,14 @@
+{
+  "version": "0.1-template",
+  "complete": false,
+  "blinded": true,
+  "independent_reviewers": 0,
+  "reviewed_cases": 0,
+  "status": "awaiting domain-expert review",
+  "required_before_manuscript_claim": [
+    "freeze a prespecified stratified image sample",
+    "blind reviewers to model correctness and randomization condition",
+    "collect localization usefulness, misleading-emphasis, and failure-mode ratings",
+    "report reviewer credentials and inter-rater agreement"
+  ]
+}
