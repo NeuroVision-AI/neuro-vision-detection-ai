@@ -1,0 +1,232 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="960"
+  height="480"
+  viewBox="0 0 960 480"
+  style="background-color: #09090b; font-family: system-ui, -apple-system, sans-serif; select: none;"
+>
+  <defs>
+    <!-- Glow filter for nodes -->
+    <filter id="glow-node" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Linear gradients for premium connection glows -->
+    <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+    <linearGradient id="grad-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+
+  <!-- Embedded stylesheet for standalone animations -->
+  <style>
+    /* Dash Flow Animation along paths */
+    @keyframes dash-flow {
+      to {
+        stroke-dashoffset: -20;
+      }
+    }
+
+    .flow-line-blue {
+      stroke-dasharray: 6, 4;
+      animation: dash-flow 1.2s linear infinite;
+      stroke: #3b82f6;
+      filter: drop-shadow(0 0 2px rgba(59,130,246,0.6));
+    }
+
+    .flow-line-purple {
+      stroke-dasharray: 6, 4;
+      animation: dash-flow 1.2s linear infinite;
+      stroke: #8b5cf6;
+      filter: drop-shadow(0 0 2px rgba(139,92,246,0.6));
+    }
+
+    .flow-line-emerald {
+      stroke-dasharray: 6, 4;
+      animation: dash-flow 1.2s linear infinite;
+      stroke: #10b981;
+      filter: drop-shadow(0 0 2px rgba(16,185,129,0.6));
+    }
+
+    .flow-line-amber {
+      stroke-dasharray: 6, 4;
+      animation: dash-flow 1.2s linear infinite;
+      stroke: #f59e0b;
+      filter: drop-shadow(0 0 2px rgba(245,158,11,0.6));
+    }
+
+    /* Node Hover Interactions */
+    .node-group {
+      transition: transform 0.3s ease;
+    }
+    .node-group:hover {
+      transform: scale(1.03) translate(-10px, -5px);
+    }
+    .node-rect {
+      fill: #18181b;
+      stroke-width: 1.5;
+      transition: stroke 0.3s ease, fill 0.3s ease, filter 0.3s ease;
+    }
+
+    .node-blue:hover .node-rect { stroke: #3b82f6; fill: #1d4ed810; filter: url(#glow-node); }
+    .node-purple:hover .node-rect { stroke: #8b5cf6; fill: #6d28d910; filter: url(#glow-node); }
+    .node-emerald:hover .node-rect { stroke: #10b981; fill: #04785710; filter: url(#glow-node); }
+    .node-amber:hover .node-rect { stroke: #f59e0b; fill: #b4530910; filter: url(#glow-node); }
+    .node-zinc:hover .node-rect { stroke: #e4e4e7; fill: #27272a; filter: url(#glow-node); }
+
+    /* Pulse effects */
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; r: 4; }
+      50% { opacity: 0.9; r: 6.5; }
+    }
+    .pulse-indicator {
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+  </style>
+
+  <!-- Background container -->
+  <rect width="100%" height="100%" fill="#09090b" />
+
+  <!-- Diagram Title Header -->
+  <g transform="translate(40, 40)">
+    <text fill="#f4f4f5" font-size="20" font-weight="900" letter-spacing="-0.5">AI NeuroOnco</text>
+    <text fill="#a1a1aa" font-size="11" font-weight="600" y="20" letter-spacing="1">SYSTEM ARCHITECTURE PIPELINES SCHEMATIC</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(680, 40)" font-size="9" font-weight="bold" fill="#71717a" letter-spacing="0.5">
+    <circle cx="10" cy="10" r="4.5" fill="#3b82f6" />
+    <text x="20" y="13">CLIENT UI</text>
+    <circle cx="95" cy="10" r="4.5" fill="#8b5cf6" />
+    <text x="105" y="13">RAG / VLM</text>
+    <circle cx="180" cy="10" r="4.5" fill="#10b981" />
+    <text x="190" y="13">MODEL / CV</text>
+  </g>
+
+  <g transform="translate(40, 100)">
+
+    <!-- ── CONNECTION PATHS (FLOW PIPELINES) ── -->
+    <!-- Client -> FastAPI Gateway -->
+    <path d="M 160 40 C 220 40, 220 180, 280 180" class="flow-line-blue fill-none stroke-[2.5]" />
+    <path d="M 160 180 L 280 180" class="flow-line-purple fill-none stroke-[2.5]" />
+    <path d="M 160 320 C 220 320, 220 180, 280 180" class="flow-line-amber fill-none stroke-[2.5]" />
+
+    <!-- FastAPI Gateway -> Services -->
+    <path d="M 440 180 C 490 180, 490 75, 540 75" class="flow-line-blue fill-none stroke-[2.5]" />
+    <path d="M 440 180 C 490 180, 490 285, 540 285" class="flow-line-purple fill-none stroke-[2.5]" />
+
+    <!-- ML Service -> Outputs -->
+    <path d="M 700 75 C 730 75, 730 35, 760 35" class="flow-line-emerald fill-none stroke-[2]" />
+    <path d="M 700 75 C 730 75, 730 115, 760 115" class="flow-line-emerald fill-none stroke-[2]" />
+
+    <!-- RAG Service -> DB & Models -->
+    <path d="M 700 285 C 730 285, 730 235, 760 235" class="flow-line-purple fill-none stroke-[2]" />
+    <path d="M 700 285 C 730 285, 730 335, 760 335" class="flow-line-purple fill-none stroke-[2]" />
+
+
+    <!-- ── INTERACTIVE SYSTEM NODES ── -->
+
+    <!-- COLUMN 1: CLIENT FRONTEND -->
+    <!-- MRI Classifier -->
+    <g class="node-group node-blue" transform="translate(0, 0)">
+      <rect width="160" height="80" rx="14" class="node-rect stroke-blue-500/20" />
+      <text fill="#fafafa" font-size="13" font-weight="700" x="18" y="32">MRI Classifier</text>
+      <text fill="#3b82f6" font-size="9" font-weight="600" font-family="monospace" x="18" y="50">Classifier.tsx</text>
+      <text fill="#52525b" font-size="9" x="18" y="65">MRI &amp; DICOM ML scan</text>
+      <circle cx="140" cy="40" r="5.5" fill="#3b82f6" class="pulse-indicator" />
+    </g>
+
+    <!-- Medical RAG Chat -->
+    <g class="node-group node-purple" transform="translate(0, 140)">
+      <rect width="160" height="80" rx="14" class="node-rect stroke-violet-500/20" />
+      <text fill="#fafafa" font-size="13" font-weight="700" x="18" y="32">Medical RAG Chat</text>
+      <text fill="#8b5cf6" font-size="9" font-weight="600" font-family="monospace" x="18" y="50">RagChat.tsx</text>
+      <text fill="#52525b" font-size="9" x="18" y="65">Literature RAG &amp; scan uploads</text>
+      <circle cx="140" cy="40" r="5.5" fill="#8b5cf6" class="pulse-indicator" />
+    </g>
+
+    <!-- Diagnostics Dashboard -->
+    <g class="node-group node-amber" transform="translate(0, 280)">
+      <rect width="160" height="80" rx="14" class="node-rect stroke-amber-500/20" />
+      <text fill="#fafafa" font-size="13" font-weight="700" x="18" y="32">Model Diagnostics</text>
+      <text fill="#f59e0b" font-size="9" font-weight="600" font-family="monospace" x="18" y="50">ModelMetrics.tsx</text>
+      <text fill="#52525b" font-size="9" x="18" y="65">ROC curves &amp; metrics</text>
+      <circle cx="140" cy="40" r="5.5" fill="#f59e0b" class="pulse-indicator" />
+    </g>
+
+
+    <!-- COLUMN 2: API GATEWAY ROUTER -->
+    <!-- FastAPI Server Gateway -->
+    <g class="node-group node-zinc" transform="translate(280, 140)">
+      <rect width="160" height="80" rx="14" class="node-rect stroke-zinc-700" />
+      <text fill="#fafafa" font-size="13" font-weight="700" x="18" y="32">FastAPI Gateway</text>
+      <text fill="#a1a1aa" font-size="9" font-weight="600" font-family="monospace" x="18" y="50">api/main.py</text>
+      <text fill="#52525b" font-size="9" x="18" y="65">Uvicorn API server port 8000</text>
+      <circle cx="140" cy="40" r="6" fill="#10b981" class="pulse-indicator" />
+    </g>
+
+
+    <!-- COLUMN 3: SERVER SERVICES -->
+    <!-- Model CV Service -->
+    <g class="node-group node-emerald" transform="translate(540, 35)">
+      <rect width="160" height="80" rx="14" class="node-rect stroke-emerald-500/20" />
+      <text fill="#fafafa" font-size="13" font-weight="700" x="18" y="32">Model Service</text>
+      <text fill="#10b981" font-size="9" font-weight="600" font-family="monospace" x="18" y="50">PyTorch + Grad-CAM</text>
+      <text fill="#52525b" font-size="9" x="18" y="65">DICOM parsing &amp; layers hook</text>
+      <circle cx="140" cy="40" r="5.5" fill="#10b981" class="pulse-indicator" />
+    </g>
+
+    <!-- LangChain RAG Service -->
+    <g class="node-group node-purple" transform="translate(540, 245)">
+      <rect width="160" height="80" rx="14" class="node-rect stroke-purple-500/20" />
+      <text fill="#fafafa" font-size="13" font-weight="700" x="18" y="32">RAG Service</text>
+      <text fill="#8b5cf6" font-size="9" font-weight="600" font-family="monospace" x="18" y="50">LangChain pipeline</text>
+      <text fill="#52525b" font-size="9" x="18" y="65">Multi-sheet Excel parsing</text>
+      <circle cx="140" cy="40" r="5.5" fill="#8b5cf6" class="pulse-indicator" />
+    </g>
+
+
+    <!-- COLUMN 4: DATA STORES, DATABASES & LLMS -->
+    <!-- Model Weights Checkpoints -->
+    <g class="node-group node-emerald" transform="translate(760, 5)">
+      <rect width="140" height="60" rx="10" class="node-rect stroke-teal-500/10" />
+      <text fill="#e4e4e7" font-size="10" font-weight="700" x="14" y="24">Weights (.pth)</text>
+      <text fill="#14b8a6" font-size="8" font-family="monospace" x="14" y="42">best_accuracy.pth</text>
+    </g>
+
+    <!-- PDF Clinical Report Generator -->
+    <g class="node-group node-emerald" transform="translate(760, 85)">
+      <rect width="140" height="60" rx="10" class="node-rect stroke-pink-500/10" />
+      <text fill="#e4e4e7" font-size="10" font-weight="700" x="14" y="24">Report Service</text>
+      <text fill="#ec4899" font-size="8" font-family="monospace" x="14" y="42">ReportLab PDF stream</text>
+    </g>
+
+    <!-- ChromaDB sqlite persist -->
+    <g class="node-group node-purple" transform="translate(760, 205)">
+      <rect width="140" height="60" rx="10" class="node-rect stroke-rose-500/10" />
+      <text fill="#e4e4e7" font-size="10" font-weight="700" x="14" y="24">ChromaDB</text>
+      <text fill="#f43f5e" font-size="8" font-family="monospace" x="14" y="42">local vector store persist</text>
+    </g>
+
+    <!-- Ollama MedGemma / Cloud Gemini VLMs -->
+    <g class="node-group node-purple" transform="translate(760, 305)">
+      <rect width="140" height="60" rx="10" class="node-rect stroke-sky-500/10" />
+      <text fill="#e4e4e7" font-size="10" font-weight="700" x="14" y="24">Ollama / Cloud VLM</text>
+      <text fill="#0ea5e9" font-size="8" font-family="monospace" x="14" y="42">medgemma:latest / Gemini</text>
+    </g>
+
+  </g>
+</svg>
