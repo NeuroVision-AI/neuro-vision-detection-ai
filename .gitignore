@@ -1,0 +1,30 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Local credentials and machine-specific settings
+**/.env
+**/.env.*
+!**/.env.example
+
+api/venv/
+api/chroma_db/
+web/node_modules/
+web/.next/
+
+# Research datasets are acquired separately; keep only repository documentation.
+data/*
+!data/README.md
+
+# Generated experiments, audit workbooks, temporary renders, and local indexes.
+outputs/
+graphify-out/
+tmp/
+
+# Large source/reference artifacts are distributed outside Git.
+*.xlsx
+!AI_NeuroOnco_Literature_Tracker.xlsx
+*.pdf
