@@ -1,0 +1,10 @@
+{"question":"Which paper established the original multimodal BRATS brain tumour segmentation benchmark?","relevant_ids":["1"]}
+{"question":"Which tracker record describes The Cancer Imaging Archive as a public imaging repository?","relevant_ids":["4"]}
+{"question":"Which corrected core studies use the four-class Kaggle MRI dataset for explainable or transfer-learning classification?","relevant_ids":["10","11","12","14","15"]}
+{"question":"Which paper combines Kaggle and BraTS data for brain tumour classification?","relevant_ids":["16"]}
+{"question":"Which paper is the nnU-Net self-configuring segmentation method?","relevant_ids":["18"]}
+{"question":"Which studies synthesize MRI prediction of IDH mutation or 1p/19q co-deletion?","relevant_ids":["25","27"]}
+{"question":"Which study reports multi-centre deep learning and radiomics for preoperative glioma grading?","relevant_ids":["26"]}
+{"question":"Which records are broad systematic or narrative reviews of deep learning brain tumour classification?","relevant_ids":["31","32","33","34"]}
+{"question":"Which record reviews ethical legal and informed-consent challenges for AI decision-making in oncology?","relevant_ids":["72"]}
+{"question":"Which review addresses global clinical and educational implementation of AI in oncology?","relevant_ids":["73"]}

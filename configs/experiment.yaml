@@ -1,0 +1,67 @@
+study:
+  title: "Leakage-aware, calibrated, externally tested explainable four-class brain MRI classification"
+  design: "Retrospective public-data development and external validation proof-of-concept"
+  intended_use: "Research only; not diagnosis, prognosis, triage, or treatment"
+  input_scope: "Single 2D contrast-enhanced T1-like MRI image"
+  labels: [glioma, meningioma, no_tumor, pituitary]
+
+data:
+  split_unit_priority: [patient_id, exact_duplicate, perceptual_duplicate]
+  preserve_official_test: true
+  train_ratio: 0.70
+  validation_ratio: 0.15
+  test_ratio: 0.15
+  seed: 42
+  require_leakage_audit: true
+  conflicting_duplicate_policy: exclude_entire_group_and_log
+  patient_id_absence_policy: disclose_residual_patient_overlap_risk
+  external_test_locked_before_training: true
+
+models:
+  primary: efficientnet_b0
+  comparator: custom_cnn
+  pretrained_primary: true
+  image_size: 224
+  class_imbalance_strategy: class_weighted_loss
+  weighted_sampler: false
+  label_smoothing: 0.1
+  max_epochs: 100
+  early_stopping_patience: 10
+  data_loader_workers_default: 0
+
+evaluation:
+  primary_endpoint: external_macro_f1
+  confidence_interval: patient_or_duplicate_group_bootstrap_95_percent
+  bootstrap_samples: 1000
+  secondary_metrics:
+    - per_class_sensitivity
+    - per_class_specificity
+    - per_class_f1
+    - balanced_accuracy
+    - matthews_correlation_coefficient
+    - macro_roc_auc_ovr
+    - macro_pr_auc_ovr
+    - expected_calibration_error
+    - multiclass_brier_score
+    - risk_coverage
+  calibration:
+    method: temperature_scaling
+    fit_split: validation_only
+
+xai:
+  method: grad_cam
+  required_checks:
+    - repeatability_rank_correlation
+    - parameter_randomization_sensitivity
+    - localization_iou_when_masks_available
+    - pointing_game_when_masks_available
+    - blinded_expert_utility_rubric
+
+rag:
+  manuscript_role: ancillary_or_separate_paper
+  required_metrics: [recall_at_k, precision_at_k, hit_at_k, reciprocal_rank, citation_precision, answer_faithfulness]
+
+reporting:
+  checklists: [CLAIM_2024, TRIPOD_AI_2024]
+  bias_appraisal: PROBAST_AI_2025
+  taxonomy: WHO_CNS5_2021

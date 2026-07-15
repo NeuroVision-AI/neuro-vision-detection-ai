@@ -1,0 +1,12 @@
+{
+  "version": "0.2-corrected-companion-index",
+  "created_utc_date": "2026-07-15",
+  "domain_expert_reviewed": false,
+  "independent_from_system_development": false,
+  "status": "preliminary engineering benchmark rerun against normalized corrected companion Paper Index",
+  "required_before_manuscript_claim": [
+    "independent domain-expert review of questions and relevance labels",
+    "freeze a versioned held-out benchmark",
+    "add blinded citation-precision and answer-faithfulness annotation if answer generation is reported"
+  ]
+}
