@@ -1,0 +1,5 @@
+dataset,split,model,n_patients_or_groups,n_images,accuracy,accuracy_ci_low,accuracy_ci_high,balanced_accuracy,macro_f1,macro_f1_ci_low,macro_f1_ci_high,mcc,macro_roc_auc_ovr,macro_pr_auc_ovr,ece,brier,nll,temperature,notes
+development,internal_test,efficientnet,,,,,,,,,,,,,,,,,
+development,internal_test,custom_cnn,,,,,,,,,,,,,,,,,
+external,locked_external_test,efficientnet,,,,,,,,,,,,,,,,,
+external,locked_external_test,custom_cnn,,,,,,,,,,,,,,,,,
